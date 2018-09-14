@@ -1,0 +1,54 @@
+# Algorithm for Multivariate Regression using numpy
+
+#import modules
+import numpy as np 
+import matplotlib.pyplot as plt
+
+#load data
+points=np.genfromtxt("testdata4x3.txt",delimiter=',')
+
+#create gradient descent function
+def gradientDescent(X, y, theta, alpha, m, iters):
+    for i in range(iters):
+        h = np.dot(X,theta.T)
+        loss=h-y
+        cost = np.sum(loss ** 2) / (2 * m)
+        grad = np.dot(X.T, loss) / m
+        theta = theta - alpha * grad.T
+        plt.plot(i,cost,'.')
+    print("Cost   ",cost)
+    return theta
+
+#normalize data
+s=points[:,0:-1]
+mean=np.mean(s,axis=0)
+std=np.std(s,axis=0)
+sss=(s-mean)/std
+points[:,0:-1]=sss
+
+#set up features and labels
+m=len(points)
+x=np.array(points[:,0:-1])
+X=np.hstack((np.ones((m,1)),x))
+y=points[:,-1][np.newaxis,:].T
+theta=np.zeros((1,np.shape(points)[1]))
+
+#set hyperparameters
+iters= 1000
+alpha = .1
+
+#print results
+theta = gradientDescent(X, y, theta, alpha, m, iters)
+print("Optimal Parameters    ",theta[0])
+
+#make predictions
+pred=[250,5]
+pred2=(pred-mean)/std
+pred3=[1,pred2[0],pred2[1]]
+z=np.dot(pred3,theta.T)[0]
+
+#print out prediction
+print("The estimated value is: ",int(np.round(z)))
+
+#show plot of cost function
+plt.show()
