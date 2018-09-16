@@ -41,11 +41,14 @@ alpha = .1
 theta = gradientDescent(X, y, theta, alpha, m, iters)
 print("Optimal Parameters    ",theta[0])
 
-#make predictions 
-pred=[4250,5]
+#make a prediction 
+sf=1268
+bdrm=3
+pred=np.array([sf,bdrm])
 pred_normed=(pred-mean)/std
 pred_normed_plus_one=np.insert(pred_normed,0,1)
 z=np.dot(pred_normed_plus_one,theta.T)[0]
+
 
 #print out prediction
 print("The estimated value is: ",int(np.round(z)))
