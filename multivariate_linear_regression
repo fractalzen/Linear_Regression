@@ -1,4 +1,4 @@
-# Algorithm for Multivariate Regression using numpy
+# Algorithm for Multivariate Linear Regression using numpy
 
 #import modules
 import numpy as np 
