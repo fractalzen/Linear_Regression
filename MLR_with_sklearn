@@ -1,0 +1,14 @@
+from sklearn import linear_model
+import numpy as np
+
+points = np.genfromtxt("../datasets/SDdata47x3.txt", delimiter=',')
+reg = linear_model.LinearRegression(copy_X=True, fit_intercept=True, n_jobs=1,normalize=True)
+
+X=points[:,0:2]
+y=points[:,2]
+
+reg.fit(X,y)
+
+print("Coefficients   ",reg.coef_)
+print("Intercept      ",reg.intercept_)
+print("Prediction     ",reg.predict(np.array([[2104,3]])))
