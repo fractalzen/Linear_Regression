@@ -1,2 +1,2 @@
 # zencode
-This is a simple multivariate linear regression program using numpy.  The features for the dataset are square footage and number of bedrooms which predicts the price of a house.
+Multivariate linear regression programs using numpy, sklearn, tensorflow and keras.  The features for the dataset are square footage and number of bedrooms which predicts the price of a house.
