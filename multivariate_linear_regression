@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 #load data
-points=np.genfromtxt("SDdata4x3.txt",delimiter=',')
+points=np.genfromtxt("data4x3.txt",delimiter=',')
 
 #create gradient descent function
 def gradientDescent(X, y, theta, alpha, m, iters):
