@@ -1,0 +1,64 @@
+# Simple supervised Learning Neural Net algorithm with just one input and one output
+#                 1st guess
+# Ol=1.5___________w=.8________________O a=1.2
+
+# Ol=1.5___________w= ?________________O y=.3
+import matplotlib.pyplot as plt
+
+##PROGRAM
+w=.8
+lr=.1
+print("                     Weights                         ","Cost\n")
+for i in range(10000):
+    C=(1.5*w-.5)**2
+    dCdw=4.5*w-1.5    
+    w=w-lr*dCdw
+    C=(1.5*w-.5)**2
+    if C==0:
+        break
+    plt.scatter(w,C)
+    print(f'{i}'.rjust(7),f'{f"      w = {w} ":<37}',f"C = {C}")
+plt.gca().invert_xaxis()
+plt.show()
+
+#FUNCTION
+# def SimpleSupervisedLearning():
+#      w=.8
+#      lr=.12
+#      print("                     Weights                         ","Cost\n")
+#      for i in range(10000):
+#          C=(1.5*w-.5)**2
+#          dCdw=4.5*w-1.5    
+#          print(f'{i}'.rjust(7),f'{f"      w = {w} ":<37}',f"C = {C}")
+#          w=w-lr*dCdw
+#          C=(1.5*w-.5)**2
+#          if C==0:
+#              break
+#          plt.scatter(w,C)
+#          print(f'{i}'.rjust(7),f'{f"      w = {w} ":<37}',f"C = {C}")
+#      plt.gca().invert_xaxis()
+#      plt.show()
+# s=SimpleSupervisedLearning()
+# s
+
+#CLASS
+# class supervisedNeuralNet():
+#     def __init__(self):
+#         self.lr=.12
+#         self.w=.8
+#         print("                     Weights                         ","Cost\n")
+#     def train(self):        
+#         for i in range(100):
+#             self.C=(1.5*self.w-.5)**2
+#             dCdw=4.5*self.w-1.5
+#             print(f'{i}'.rjust(7),f'{f"      w = {self.w} ":<37}',f"C = {self.C}")
+#             self.w=self.w-self.lr*dCdw
+#             self.C=(1.5*self.w-.5)**2
+#             if self.C==0:
+#                 break
+#             plt.scatter(self.w,self.C)
+#         plt.gca().invert_xaxis()
+#         plt.show()
+
+# s=supervisedNeuralNet()
+# s.train()
